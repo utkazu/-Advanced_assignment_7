@@ -13,7 +13,32 @@
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code, autocomplete: "postal code" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :prefecture_code %><br />
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: '都道府県' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address_city %><br />
+          <%= f.text_field :address_city, autocomplete: "address city" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address_street %><br />
+          <%= f.text_field :address_street, autocomplete: "address street" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address_building %><br />
+          <%= f.text_field :address_building, autocomplete: "address building" %>
         </div>
 
         <div class="field">
@@ -28,6 +53,8 @@
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
+
+        <%= hidden_field_tag :address, "default" %>
 
         <div class="actions">
           <%= f.submit "Sign up" %>
